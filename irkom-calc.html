@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html manifest="offline.appcache">
+<head>
+    <meta charset="UTF-8">
+    <title>Программа</title>
+    <script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+        // Для Расчета стоимости детали
+            var i = 5;
+            $(".calc").ready(function(){
+            $("#button_calc").click(function(){
+                i += 5;
+                $("#table_calc").append("<tr><td><span>0"+i+"</span></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>");
+                }); 
+            });
+            
+        // Для Зарплаты   
+            $("#button_salarys").click(function(){
+                $("#table_salarys").append(info);
+                $("#table_salarys .del").css({"opacity": "1"}); 
+                $(".del").click(function () {
+                    if (table_salarys.rows.length > 2) {
+                        $(this).parents("tr").remove();
+                    }
+                    else {
+                        $(this).parents("tr").find('td input').val('');
+                    }
+                });
+            });   
+        
+        // Для Оборудования
+            $("#button_equipment").click(function(){
+                $("#table_equipment").append(info);
+                $("#table_equipment .del").css({"opacity": "1"}); 
+                $(".del").click(function () {
+                    if (table_equipment.rows.length > 2) {
+                        $(this).parents("tr").remove();
+                    }
+                    else {
+                        $(this).parents("tr").find('td input').val('');
+                    }
+                });
+            });     
+        
+        // Для Инструментов
+            $("#button_tool").click(function(){
+                $("#table_tool").append(info);
+                $("#table_tool .del").css({"opacity": "1"}); 
+                $(".del").click(function () {
+                    if (table_tool.rows.length > 2) {
+                        $(this).parents("tr").remove();
+                    }
+                    else {
+                        $(this).parents("tr").find('td input').val('');
+                    }
+                });
+            });
+        
+        // Для Материалов
+            $("#button_materials").click(function(){
+                $("#table_materials").append(info);
+                $("#table_materials .del").css({"opacity": "1"}); 
+                $(".del").click(function () {
+                    if (table_materials.rows.length > 2) {
+                        $(this).parents("tr").remove();
+                    }
+                    else {
+                        $(this).parents("tr").find('td input').val('');
+                    }
+                });
+            });
+            
+            
+        // Переменная (добавление строки)    
+            var info = ("<tr><td><input type='text'></td><td><input type='number'></td><td class='del'>+</td></tr>");          
+            
+        // Слайдер таблиц (смена вторичных таблиц)
+            
+           $(".push_calc").click(function(){
+               $(".calc").show();
+               $(".salarys, .equipment, .tool, .materials").hide();
+               $(".push_calc").addClass("active_nav");
+               $(".push_salarys, .push_equipment, .push_tool, .push_materials").removeClass("active_nav");
+           }); 
+           $(".push_salarys").click(function(){
+               $(".salarys").show();
+               $(".calc, .equipment, .tool, .materials").hide();
+               $(".push_salarys").addClass("active_nav");
+               $(".push_calc, .push_equipment, .push_tool, .push_materials").removeClass("active_nav");
+           }); 
+           $(".push_equipment").click(function(){
+               $(".equipment").show();
+               $(".calc, .salarys, .tool, .materials").hide();
+               $(".push_equipment").addClass("active_nav");
+               $(".push_calc, .push_salarys, .push_tool, .push_materials").removeClass("active_nav");
+           }); 
+           $(".push_tool").click(function(){
+               $(".tool").show();
+               $(".calc, .salarys, .equipment, .materials").hide();
+               $(".push_tool").addClass("active_nav");
+               $(".push_calc, .push_salarys, .push_equipment, .push_materials").removeClass("active_nav");
+           }); 
+           $(".push_materials").click(function(){
+               $(".materials").show();
+               $(".calc, .salarys, .equipment, .tool").hide();
+               $(".push_materials").addClass("active_nav");
+               $(".push_calc, .push_salarys, .push_equipment, .push_tool").removeClass("active_nav");
+           }); 
+        });    
+        
+    </script>
+    <style type="text/css">    
+        
+        /* reset browser styles */
+        html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,           img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, 
+        figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+        }
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1.2;
+        }
+        ol { 
+            padding-left: 1.4em;
+            list-style: decimal;
+        }
+        ul {
+            padding-left: 1.4em;
+            list-style: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        } 
+        
+        /* end reset browser styles */
+    
+        body {
+            color: #4b5354;
+        }
+        div {
+            margin-top: 2em;
+        }
+        #general {
+            margin: 0 auto;
+            width: 65em;
+        }
+        .nav {
+            margin-bottom: 1em;
+        }
+        .active_nav {
+            background-color: #e9edef;
+        }
+        .nav button:hover {
+            background-color: #e9edef;
+            cursor: pointer;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+        }
+        caption {
+            font-size: 1.35em;
+            font-weight: bold;
+            padding-bottom: 1em;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #4b5354;
+            vertical-align: middle;
+        }
+        td {
+            background-color: #ffffff;
+            height: 1.6em;
+            padding-left: .35em;
+            text-align: left;
+        }
+        .del {
+            font-weight: 600;
+            opacity: 0;
+	    filter:Alpha(opacity=1);
+            -webkit-transform: rotate(45deg);
+	    -o-transform: rotate(45deg);
+	    -moz-transform: rotate(45deg);
+	    filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7, M12=0.7, M21=-0.7, M22=0.7, SizingMethod="auto expand");
+            transform: rotate(45deg);
+        }
+        .del:hover {
+            cursor: pointer;
+        }
+        .first_tr td {
+            background-color: #e9edef;
+            height: 1.9em;
+        }
+        .salarys td:nth-child(1), .equipment td:nth-child(1), .tool td:nth-child(1), .materials td:nth-child(1) {
+            width: 65%;
+        }
+        .salarys td:nth-child(3), .equipment td:nth-child(3), .tool td:nth-child(3), .materials td:nth-child(3) {
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+            text-align: center;
+            width: 5%;
+        }
+        .calc {
+            text-align: right;
+        }
+        .salarys, .equipment, .tool, .materials {
+            text-align: right;
+            display: none;
+            width: 35em;
+        }
+        input {
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+            font-size: .8em;
+            outline: none;
+            width: 98%;
+        }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+        input[type='number'] {
+            -moz-appearance: textfield;
+        }
+        button {
+            padding: .45em 1em;
+            background-color: rgba(0, 0, 128, 0);
+            border: none;
+            color: #4b5354;
+            display: inline-block;
+            font-weight: 600;
+            margin: 2em 0 0 0;
+            outline: none;
+        }
+        button:hover {
+            background-color: #e9edef;
+            cursor: pointer;
+        }
+        .salarys button, .equipment button, .tool button, .materials button {
+            margin-right: 5%;
+        }  
+    </style>
+</head>
+<body>
+    <div id="general">
+        <div class="nav">
+            <button class="push_calc active_nav">Расчет стоимости деталей</button>
+            <button class="push_salarys">Зарплаты</button>
+            <button class="push_equipment">Оборудование</button>
+            <button class="push_tool">Инструмент</button>
+            <button class="push_materials">Материалы</button>
+        </div>
+        <div class="calc">
+            <table id="table_calc" cellpadding="10" rules="all">
+                <caption>Расчет стоимости деталей</caption>
+                <tr class="first_tr">
+                    <td colspan="4">Наименование детали</td>
+                    <td colspan="4">Количество в партии</td>
+                </tr>
+                <tr class="first_tr">
+                    <td>Материал</td>
+                    <td>Масса детали</td>
+                    <td>Масса заготовки</td>
+                    <td colspan="2">Тип заготовки:</td>
+                    <td colspan="3">Размер заготовки:</td>
+                </tr>
+                <tr class="first_tr">
+                    <td rowspan="2">Номер операции</td>
+                    <td rowspan="2">Наименование операции</td>
+                    <td rowspan="2">Оборудование</td>
+                    <td rowspan="2">Инструмент</td>
+                    <td rowspan="2">Коэфициент использования</td>
+                    <td rowspan="2">Рабочий</td>
+                    <td colspan="2">Время</td>
+                        <tr class="first_tr">
+                            <td>Подготовка</td>
+                            <td>Машинное время</td>
+                        </tr>
+                    </tr>
+                <tr>
+                    <td>005</td>
+                    <td><input></td>
+                    <td><input></td>
+                    <td><input></td>
+                    <td><input></td>
+                    <td><input></td>
+                    <td><input></td>
+                    <td><input></td>
+                </tr>
+            </table>    
+            <button id="button_calc">
+                + Новая операция
+            </button>
+        </div>
+        <div class="salarys">
+            <form>
+                <table id="table_salarys">
+                    <caption>Зарплаты</caption>
+                    <tr class="first_tr">
+                        <td>Фамилия</td>
+                        <td>Зарплата</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="number"></td>
+                        <td class="del">+</td>
+                    </tr>
+                </table>
+            </form>
+            <button id="button_salarys">
+                + Добавить сотрудника
+            </button>
+        </div>
+        <div class="equipment">
+            <form>
+                <table id="table_equipment">
+                    <caption>Оборудование</caption>
+                    <tr class="first_tr" class="first_tr">
+                        <td>Шифр</td>
+                        <td>Стоимость</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="number"></td>
+                        <td class="del">+</td>
+                    </tr>
+                </table>
+            </form>
+            <button id="button_equipment">
+                + Добавить оборудование
+            </button>
+        </div>
+        <div class="tool">
+            <form>
+                <table id="table_tool">
+                    <caption>Инструмент</caption>
+                    <tr class="first_tr">
+                        <td>Шифр</td>
+                        <td>Стоимость</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="number"></td>
+                        <td class="del">+</td>
+                    </tr>
+                </table>
+            </form>
+            <button id="button_tool">
+                + Добавить инструмент
+            </button>
+        </div>
+        <div class="materials">
+            <form>
+                <table id="table_materials">
+                    <caption>Материалы</caption>
+                    <tr class="first_tr">
+                        <td>Шифр</td>
+                        <td>Стоимость</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"></td>
+                        <td><input type="number"></td>
+                        <td class="del">+</td>
+                    </tr>
+                </table>
+            </form>
+            <button id="button_materials">
+                + Добавить материал
+            </button>
+        </div>
+    </div>
+</body>
+</html>
